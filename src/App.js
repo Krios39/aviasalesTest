@@ -11,10 +11,13 @@ const useStyles = makeStyles({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
+        backgroundColor:"#f3f7fa",
+        paddingTop:"10%"
     },
     tickets: {
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        width:500,
     }
 })
 

@@ -2,16 +2,28 @@ import Box from "@material-ui/core/Box";
 import {Typography} from "@material-ui/core";
 import React from "react";
 import {makeStyles} from "@material-ui/styles";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
     otherColumns: {
         display: "flex",
         flexDirection: "row",
+        marginTop: 10
     },
     ticketItem: {
         display: "flex",
-        flexDirection: "column"
-    }
+        flexDirection: "column",
+        width: 140,
+    },
+    leftPadding: {
+        paddingLeft: 20
+    },
+    font: {
+        fontWeight: 600
+    },
+    title: {
+        color: "#A0B0B9"
+    },
 })
 
 export default function WayInformationRow({segment}) {
@@ -38,16 +50,16 @@ export default function WayInformationRow({segment}) {
     return (
         <Box className={classes.otherColumns}>
             <Box className={classes.ticketItem}>
-                <Typography>{segment.origin + " - " + segment.destination}</Typography>
-                <Typography>{getFlightTime()}</Typography>
+                <Typography className={clsx(classes.font, classes.title)}>{segment.origin + " - " + segment.destination}</Typography>
+                <Typography className={classes.font}>{getFlightTime()}</Typography>
             </Box>
-            <Box className={classes.ticketItem}>
-                <Typography>В пути</Typography>
-                <Typography>{Math.trunc(segment.duration / 60)}ч {segment.duration % 60}м</Typography>
+            <Box className={clsx(classes.ticketItem, classes.leftPadding)}>
+                <Typography className={clsx(classes.font, classes.title)}>В пути</Typography>
+                <Typography className={classes.font}>{Math.trunc(segment.duration / 60)}ч {segment.duration % 60}м</Typography>
             </Box>
-            <Box className={classes.ticketItem}>
-                <Typography>{getTransferCount()}</Typography>
-                <Typography>{segment.stops.join(", ")}</Typography>
+            <Box className={clsx(classes.ticketItem, classes.leftPadding)}>
+                <Typography className={clsx(classes.font, classes.title)}>{getTransferCount()}</Typography>
+                <Typography className={classes.font}>{segment.stops.join(", ")}</Typography>
             </Box>
         </Box>
     )
